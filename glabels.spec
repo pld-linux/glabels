@@ -122,7 +122,7 @@ update-mime-database %{_datadir}/mime
 %{_datadir}/application-registry/*
 %{_datadir}/mime-info/*
 %{_datadir}/mime/packages/*
-%{_mandir}/man1
+%{_mandir}/man1/*.1*
 %{_pixmapsdir}/%{name}
 %{_pixmapsdir}/*.png
 %{_desktopdir}/*.desktop
