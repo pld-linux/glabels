@@ -1,13 +1,12 @@
 Summary:	gLabels - a GNOME2 program to create labels and business cards
 Summary(pl):	gLabels - program dla GNOME2 do tworzenia etykiet i wizytówek
 Name:		glabels
-Version:	1.93.3
+Version:	2.0.0
 Release:	1
 License:	GPL
 Group:		Applications/Graphics
 Source0:	http://dl.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
-# Source0-md5:	29abf3f91ea9e8aec194744302175c02
-Patch0:		%{name}-desktop.patch
+# Source0-md5:	77a421ee35b64f01a0fbf5ada5944add
 URL:		http://glabels.sourceforge.net/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -68,7 +67,6 @@ Statyczna biblioteka glabels.
 
 %prep
 %setup -q
-%patch0 -p1
 
 mv -f po/{zh_TW.Big5,zh_TW}.po
 %{__perl} -pi -e 's/zh_TW\.Big5/zh_TW/' configure.in
@@ -92,6 +90,9 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
+#Remove junks
+rm $RPM_BUILD_ROOT%{_datadir}/mime/{XMLnamespaces,globs,magic}
+
 %find_lang %{name} --with-gnome --all-name
 
 %clean
@@ -110,6 +111,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/%{name}
 %{_datadir}/application-registry/*
 %{_datadir}/mime-info/*
+%{_datadir}/mime/application/*
+%{_datadir}/mime/packages/*
+%{_mandir}/man1
 %{_pixmapsdir}/%{name}
 %{_pixmapsdir}/*.png
 %{_desktopdir}/*.desktop
