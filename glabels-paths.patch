@@ -1,0 +1,35 @@
+diff -urN glabels-1.91.1.orig/Makefile.am glabels-1.91.1/Makefile.am
+--- glabels-1.91.1.orig/Makefile.am	Tue May 13 15:59:13 2003
++++ glabels-1.91.1/Makefile.am	Tue May 13 16:06:55 2003
+@@ -8,7 +8,7 @@
+ 	glabels.desktop glabels.spec.in glabels.spec \
+ 	intltool-extract.in intltool-merge.in intltool-update.in
+ 
+-Applicationsdir = $(datadir)/gnome/apps/Applications
++Applicationsdir = $(datadir)/applications
+ Applications_DATA = glabels.desktop
+ 
+ pixmapdir=$(datadir)/pixmaps/glabels
+@@ -17,18 +17,18 @@
+ install-data-local:
+ 	@$(NORMAL_INSTALL)
+ 	if test -d $(srcdir)/pixmaps; then \
+-	  $(mkinstalldirs) $(pixmapdir); \
++	  $(mkinstalldirs) $(DESTDIR)$(pixmapdir); \
+ 	  for pixmap in $(srcdir)/pixmaps/*; do \
+ 	    if test -f $$pixmap; then \
+-	      $(INSTALL_DATA) $$pixmap $(pixmapdir); \
++	      $(INSTALL_DATA) $$pixmap $(DESTDIR)$(pixmapdir); \
+ 	    fi \
+ 	  done \
+ 	fi
+ 	if test -d $(srcdir)/data; then \
+-	  $(mkinstalldirs) $(configdir); \
++	  $(mkinstalldirs) $(DESTDIR)$(configdir); \
+ 	  for file in $(srcdir)/data/*.template; do \
+ 	    if test -f $$file; then \
+-	      $(INSTALL_DATA) $$file $(configdir); \
++	      $(INSTALL_DATA) $$file $(DESTDIR)$(configdir); \
+ 	    fi \
+ 	  done \
+ 	fi 
