@@ -1,6 +1,6 @@
-diff -urN glabels-1.91.1.orig/glabels.desktop glabels-1.91.1/glabels.desktop
---- glabels-1.91.1.orig/glabels.desktop	Tue May 13 15:59:13 2003
-+++ glabels-1.91.1/glabels.desktop	Tue May 13 16:19:46 2003
+diff -urN glabels-1.91.1.orig/data/glabels.desktop glabels-1.91.1/data/glabels.desktop
+--- glabels-1.91.1.orig/data/glabels.desktop	Tue May 13 15:59:13 2003
++++ glabels-1.91.1/data/glabels.desktop	Tue May 13 16:19:46 2003
 @@ -1,9 +1,13 @@
  [Desktop Entry]
 +Encoding=UTF-8
