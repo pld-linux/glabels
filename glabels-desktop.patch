@@ -1,7 +1,7 @@
 diff -aurN glabels-1.92.1.orig/data/glabels.desktop.in glabels-1.92.1/data/glabels.desktop.in
 --- glabels-1.92.1.orig/data/glabels.desktop.in	2003-10-19 04:21:11.000000000 +0200
 +++ glabels-1.92.1/data/glabels.desktop.in	2003-10-28 15:18:49.929175728 +0100
-@@ -1,11 +1,14 @@
+@@ -1,11 +1,15 @@
  [Desktop Entry]
  Name=gLabels Label Designer
  Name[ja]=gLabels
@@ -11,8 +11,11 @@ diff -aurN glabels-1.92.1.orig/data/glabels.desktop.in glabels-1.92.1/data/glabe
 +Comment[pl]=Tworzy etykiety i wizytówki
  Exec=glabels
  Icon=glabels/glabels-icon.png
- Terminal=0
+-Terminal=0
++Terminal=false
  Type=Application
- Categories=GNOME;Application;Office
+-Categories=GNOME;Application;Office
++Categories=GNOME;Application;Office;
  StartupNotify=true
++Encoding=UTF-8
 +# vi: encoding=utf-8
