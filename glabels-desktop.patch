@@ -1,13 +1,18 @@
 diff -aurN glabels-1.92.1.orig/data/glabels.desktop.in glabels-1.92.1/data/glabels.desktop.in
 --- glabels-1.92.1.orig/data/glabels.desktop.in	2003-10-19 04:21:11.000000000 +0200
-+++ glabels-1.92.1/data/glabels.desktop.in	2003-10-28 15:14:31.038533088 +0100
-@@ -1,7 +1,9 @@
++++ glabels-1.92.1/data/glabels.desktop.in	2003-10-28 15:18:49.929175728 +0100
+@@ -1,11 +1,14 @@
  [Desktop Entry]
  Name=gLabels Label Designer
-+Name[pl]=gLabels
  Name[ja]=gLabels
++Name[pl]=gLabels
  Comment=Create labels, business cards and media covers.
-+Comment[pl]=Tworzy etykiety i wizytówki
  Comment[ja]=¥é¥Ù¥ë¤È¥Ó¥¸¥Í¥¹¥«¡¼¥É¤ÎºîÀ®¥×¥í¥°¥é¥à
++Comment[pl]=Tworzy etykiety i wizytówki
  Exec=glabels
  Icon=glabels/glabels-icon.png
+ Terminal=0
+ Type=Application
+ Categories=GNOME;Application;Office
+ StartupNotify=true
++# vi: encoding=utf-8
