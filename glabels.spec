@@ -11,7 +11,7 @@ Patch0:		%{name}-install.patch
 URL:		http://glabels.sourceforge.net/
 BuildRequires:	autoconf
 BuildRequires:	automake
-BuildRequires:	gnome-common
+BuildRequires:	gnome-common >= 2.8.0
 BuildRequires:	intltool >= 0.21
 BuildRequires:	libbonobo-devel >= 2.4.0
 BuildRequires:	libglade2-devel >= 2.0.1
@@ -80,7 +80,7 @@ glib-gettextize --copy --force
 %{__libtoolize}
 intltoolize --copy --force
 gnome-doc-common --copy
-%{__aclocal} -I %{_aclocaldir}/gnome2-macros
+%{__aclocal}
 %{__autoheader}
 %{__automake}
 %{__autoconf}
