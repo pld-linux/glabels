@@ -7,6 +7,7 @@ License:	GPL
 Group:		Applications/Graphics
 Source0:	http://dl.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
 # Source0-md5:	77a421ee35b64f01a0fbf5ada5944add
+Patch0:		%{name}-install.patch
 URL:		http://glabels.sourceforge.net/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -19,6 +20,8 @@ BuildRequires:	libgnomeui-devel >= 2.4.0
 BuildRequires:	libtool
 BuildRequires:	libxml2-devel >= 2.4.23
 BuildRequires:	pkgconfig
+Requires(post,postun):	scrollkeeper
+Requires(post,postun):	shared-mime-info
 Requires:	%{name}-libs = %{version}-%{release}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -67,6 +70,7 @@ Statyczna biblioteka glabels.
 
 %prep
 %setup -q
+%patch0 -p1
 
 mv -f po/{zh_TW.Big5,zh_TW}.po
 %{__perl} -pi -e 's/zh_TW\.Big5/zh_TW/' configure.in
@@ -90,16 +94,22 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-#Remove junks
-rm $RPM_BUILD_ROOT%{_datadir}/mime/{XMLnamespaces,globs,magic}
-
 %find_lang %{name} --with-gnome --all-name
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%post	-p /usr/bin/scrollkeeper-update
-%postun	-p /usr/bin/scrollkeeper-update
+%post
+umask 022
+/usr/bin/scrollkeeper-update
+update-mime-database %{_datadir}/mime
+[ ! -x /usr/bin/update-desktop-database ] || /usr/bin/update-desktop-database >/dev/null 2>&1
+
+%postun
+umask 022
+/usr/bin/scrollkeeper-update
+update-mime-database %{_datadir}/mime
+[ ! -x /usr/bin/update-desktop-database ] || /usr/bin/update-desktop-database >/dev/null 2>&1
 
 %post	libs -p /sbin/ldconfig
 %postun	libs -p /sbin/ldconfig
@@ -111,7 +121,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/%{name}
 %{_datadir}/application-registry/*
 %{_datadir}/mime-info/*
-%{_datadir}/mime/application/*
 %{_datadir}/mime/packages/*
 %{_mandir}/man1
 %{_pixmapsdir}/%{name}
