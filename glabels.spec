@@ -13,6 +13,7 @@ URL:		http://glabels.sf.net/
 BuildRequires:	XFree86-devel
 BuildRequires:	autoconf
 BuildRequires:	automake
+BuildRequires:	gnome-common
 BuildRequires:	intltool
 BuildRequires:	libbonobo-devel >= 2.0.0
 BuildRequires:	libgnomeprintui-devel >= 2.2
