@@ -1,12 +1,12 @@
 Summary:	gLabels - a GNOME2 program to create labels and business cards
 Summary(pl):	gLabels - program dla GNOME2 do tworzenia etykiet i wizytówek
 Name:		glabels
-Version:	2.0.0
+Version:	2.0.1
 Release:	1
 License:	GPL
 Group:		Applications/Graphics
 Source0:	http://dl.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
-# Source0-md5:	77a421ee35b64f01a0fbf5ada5944add
+# Source0-md5:	d6658de86c76f9f333ed28ac11ca22f9
 Patch0:		%{name}-install.patch
 URL:		http://glabels.sourceforge.net/
 BuildRequires:	autoconf
