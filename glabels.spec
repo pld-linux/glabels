@@ -6,6 +6,7 @@ Release:	1
 License:	GPL
 Group:		Applications/Graphics
 Source0:	http://snaught.com/glabels/source/%{name}-%{version}.tar.gz
+# Source0-md5:	bd5bfd26c9e8c8f7741e255264ce2377
 Patch0:		%{name}-libgnomeprint_fix.patch
 Patch1:		%{name}-paths.patch
 Patch2:		%{name}-desktop.patch
