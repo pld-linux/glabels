@@ -103,7 +103,7 @@ rm -rf $RPM_BUILD_ROOT
 umask 022
 /usr/bin/scrollkeeper-update
 update-mime-database %{_datadir}/mime
-[ ! -x /usr/bin/update-desktop-database ] || /usr/bin/update-desktop-database >/dev/null 2>&1
+[ ! -x /usr/bin/update-desktop-database ] || /usr/bin/update-desktop-database >/dev/null 2>&1 ||:
 
 %postun
 umask 022
