@@ -2,7 +2,7 @@ Summary:	gLabels - a GNOME2 program to create labels and business cards
 Summary(pl):	gLabels - program dla GNOME2 do tworzenia etykiet i wizytówek
 Name:		glabels
 Version:	2.0.2
-Release:	2
+Release:	3
 License:	GPL
 Group:		Applications/Graphics
 Source0:	http://dl.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
@@ -22,9 +22,10 @@ BuildRequires:	libgnomeui-devel >= 2.4.0
 BuildRequires:	libtool
 BuildRequires:	libxml2-devel >= 2.4.23
 BuildRequires:	pkgconfig
+BuildRequires:	rpmbuild(macros) >= 1.197
 BuildRequires:	sed >= 4.0
+Requires(post,postun):	desktop-file-utils
 Requires(post,postun):	scrollkeeper
-Requires(post,postun):	shared-mime-info
 Requires:	%{name}-libs = %{version}-%{release}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -80,10 +81,10 @@ mv -f po/{zh_TW.Big5,zh_TW}.po
 sed -i -e 's/zh_TW\.Big5/zh_TW/' configure.in
 
 %build
-glib-gettextize --copy --force
+%{__glib_gettextize}
 %{__libtoolize}
-intltoolize --copy --force
-gnome-doc-common --copy
+%{__intltoolize}
+%{__gnome_doc_common}
 %{__aclocal}
 %{__autoheader}
 %{__automake}
@@ -98,33 +99,32 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
+rm -rf $RPM_BUILD_ROOT%{_datadir}/{mime-info,application-registry}
+
 %find_lang %{name} --with-gnome --all-name
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %post
-umask 022
-/usr/bin/scrollkeeper-update
-update-mime-database %{_datadir}/mime
-[ ! -x /usr/bin/update-desktop-database ] || /usr/bin/update-desktop-database >/dev/null 2>&1 ||:
+%scrollkeeper_update_post
+%update_desktop_database_post
 
 %postun
-umask 022
-/usr/bin/scrollkeeper-update
-update-mime-database %{_datadir}/mime
-[ ! -x /usr/bin/update-desktop-database ] || /usr/bin/update-desktop-database >/dev/null 2>&1
+%scrollkeeper_update_postun
+%update_desktop_database_postun
 
-%post	libs -p /sbin/ldconfig
-%postun	libs -p /sbin/ldconfig
+%post	libs
+%ldconfig_post
+
+%postun	libs
+%ldconfig_postun
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog README TODO
 %attr(755,root,root) %{_bindir}/*
 %{_datadir}/%{name}
-%{_datadir}/application-registry/*
-%{_datadir}/mime-info/*
 %{_datadir}/mime/packages/*
 %{_mandir}/man1/*.1*
 %{_pixmapsdir}/%{name}
