@@ -5,7 +5,7 @@ Version:	2.0.2
 Release:	3
 License:	GPL
 Group:		Applications/Graphics
-Source0:	http://dl.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
+Source0:	http://dl.sourceforge.net/glabels/%{name}-%{version}.tar.gz
 # Source0-md5:	9293fd65bd858cd8c84c2cd166924c73
 Patch0:		%{name}-install.patch
 Patch1:		%{name}-desktop.patch
@@ -15,12 +15,12 @@ BuildRequires:	automake
 BuildRequires:	gnome-common >= 2.8.0
 BuildRequires:	howl-devel >= 0.9.10
 BuildRequires:	intltool >= 0.21
-BuildRequires:	libbonobo-devel >= 2.4.0
-BuildRequires:	libglade2-devel >= 2.0.1
-BuildRequires:	libgnomeprintui-devel >= 2.4.0
-BuildRequires:	libgnomeui-devel >= 2.4.0
+BuildRequires:	libbonobo-devel >= 2.8.1
+BuildRequires:	libglade2-devel >= 1:2.5.1
+BuildRequires:	libgnomeprintui-devel >= 2.10.2
+BuildRequires:	libgnomeui-devel >= 2.10.0-2
 BuildRequires:	libtool
-BuildRequires:	libxml2-devel >= 2.4.23
+BuildRequires:	libxml2-devel >= 1:2.6.19
 BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(macros) >= 1.197
 BuildRequires:	sed >= 4.0
@@ -41,6 +41,7 @@ wizytówek.
 Summary:	glabels shared libraries
 Summary(pl):	Biblioteki wspó³dzielone glabels
 Group:		Libraries
+Requires(post,postun):	/sbin/ldconfig
 
 %description libs
 glabels shared libraries.
@@ -114,10 +115,10 @@ rm -rf $RPM_BUILD_ROOT
 %scrollkeeper_update_postun
 %update_desktop_database_postun
 
-%post	libs
+%post libs
 %ldconfig_post
 
-%postun	libs
+%postun libs
 %ldconfig_postun
 
 %files -f %{name}.lang
