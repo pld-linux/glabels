@@ -115,11 +115,9 @@ rm -rf $RPM_BUILD_ROOT
 %scrollkeeper_update_postun
 %update_desktop_database_postun
 
-%post libs
-%ldconfig_post
+%post libs -p /sbin/ldconfig
 
-%postun libs
-%ldconfig_postun
+%postun libs -p /sbin/ldconfig
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
