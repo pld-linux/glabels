@@ -41,7 +41,6 @@ wizytówek.
 Summary:	glabels shared libraries
 Summary(pl):	Biblioteki wspó³dzielone glabels
 Group:		Libraries
-Requires(post,postun):	/sbin/ldconfig
 
 %description libs
 glabels shared libraries.
