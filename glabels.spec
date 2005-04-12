@@ -115,8 +115,7 @@ rm -rf $RPM_BUILD_ROOT
 %scrollkeeper_update_postun
 %update_desktop_database_postun
 
-%post libs -p /sbin/ldconfig
-
+%post	libs -p /sbin/ldconfig
 %postun libs -p /sbin/ldconfig
 
 %files -f %{name}.lang
