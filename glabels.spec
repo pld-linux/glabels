@@ -1,18 +1,19 @@
 Summary:	gLabels - a GNOME2 program to create labels and business cards
 Summary(pl):	gLabels - program dla GNOME2 do tworzenia etykiet i wizytówek
 Name:		glabels
-Version:	2.0.3
+Version:	2.1.1
 Release:	1
 License:	GPL
 Group:		Applications/Graphics
 Source0:	http://dl.sourceforge.net/glabels/%{name}-%{version}.tar.gz
-# Source0-md5:	c077afdeac5ba0c685e404eea1d794e8
+# Source0-md5:	f174e48036341c49e56ec8568c73cc25
 Patch0:		%{name}-install.patch
 Patch1:		%{name}-desktop.patch
 URL:		http://glabels.sourceforge.net/
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	gnome-common >= 2.8.0
+BuildRequires:	gtk-doc >= 1.0
 BuildRequires:	howl-devel >= 0.9.10
 BuildRequires:	intltool >= 0.21
 BuildRequires:	libbonobo-devel >= 2.8.1
@@ -85,12 +86,15 @@ sed -i -e 's/zh_TW\.Big5/zh_TW/' configure.in
 %{__libtoolize}
 %{__intltoolize}
 %{__gnome_doc_common}
+%{__gtkdocize}
 %{__aclocal}
 %{__autoheader}
 %{__automake}
 %{__autoconf}
 %configure \
-	--enable-platform-gnome-2
+	--enable-platform-gnome-2 \
+	--enable-gtk-doc \
+	--with-html-dir=%{_gtkdocdir}
 %{__make}
 
 %install
@@ -136,8 +140,10 @@ rm -rf $RPM_BUILD_ROOT
 %files devel
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/lib*.so
+%{_gtkdocdir}/libglabels
 %{_libdir}/lib*.la
 %{_includedir}/libglabels
+%{_pkgconfigdir}/*.pc
 
 %files static
 %defattr(644,root,root,755)
