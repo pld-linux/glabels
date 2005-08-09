@@ -23,6 +23,7 @@ BuildRequires:	libtool
 BuildRequires:	libxml2-devel >= 1:2.6.19
 BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(macros) >= 1.197
+BuildRequires:	scrollkeeper
 BuildRequires:	sed >= 4.0
 Requires(post,postun):	desktop-file-utils
 Requires(post,postun):	scrollkeeper
