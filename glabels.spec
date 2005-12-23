@@ -1,20 +1,19 @@
 Summary:	gLabels - a GNOME2 program to create labels and business cards
 Summary(pl):	gLabels - program dla GNOME2 do tworzenia etykiet i wizytówek
 Name:		glabels
-Version:	2.1.1
+Version:	2.1.2
 Release:	1
 License:	GPL
 Group:		Applications/Graphics
 Source0:	http://dl.sourceforge.net/glabels/%{name}-%{version}.tar.gz
-# Source0-md5:	f174e48036341c49e56ec8568c73cc25
-Patch0:		%{name}-install.patch
-Patch1:		%{name}-desktop.patch
+# Source0-md5:	e13d2f5b35f60ec2dd94502d286257e1
+Patch0:		%{name}-desktop.patch
 URL:		http://glabels.sourceforge.net/
 BuildRequires:	autoconf
 BuildRequires:	automake
+BuildRequires:	evolution-data-server-devel >= 1.2
 BuildRequires:	gnome-common >= 2.8.0
 BuildRequires:	gtk-doc >= 1.0
-BuildRequires:	howl-devel >= 0.9.10
 BuildRequires:	intltool >= 0.21
 BuildRequires:	libbonobo-devel >= 2.8.1
 BuildRequires:	libglade2-devel >= 1:2.5.1
@@ -76,7 +75,6 @@ Statyczna biblioteka glabels.
 %prep
 %setup -q
 %patch0 -p1
-%patch1 -p1
 
 mv -f po/{zh_TW.Big5,zh_TW}.po
 sed -i -e 's/zh_TW\.Big5/zh_TW/' configure.in
@@ -92,9 +90,11 @@ sed -i -e 's/zh_TW\.Big5/zh_TW/' configure.in
 %{__automake}
 %{__autoconf}
 %configure \
-	--enable-platform-gnome-2 \
 	--enable-gtk-doc \
-	--with-html-dir=%{_gtkdocdir}
+	--with-html-dir=%{_gtkdocdir} \
+	--disable-update-desktopdb \
+	--disable-update-mimedb
+	
 %{__make}
 
 %install
