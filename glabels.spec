@@ -91,7 +91,7 @@ sed -i -e 's/zh_TW\.Big5/zh_TW/' configure.in
 %configure \
 	--disable-update-desktopdb \
 	--disable-update-mimedb
-	
+
 %{__make}
 
 %install
