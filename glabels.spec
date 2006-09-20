@@ -11,8 +11,9 @@ Patch0:		%{name}-desktop.patch
 URL:		http://glabels.sourceforge.net/
 BuildRequires:	autoconf
 BuildRequires:	automake
+BuildRequires:	evolution-data-server-devel >= 1.2
 BuildRequires:	gnome-common >= 2.8.0
-BuildRequires:	howl-devel >= 0.9.10
+BuildRequires:	gtk-doc >= 1.0
 BuildRequires:	intltool >= 0.21
 BuildRequires:	libbonobo-devel >= 2.8.1
 BuildRequires:	libglade2-devel >= 1:2.5.1
@@ -84,14 +85,17 @@ sed -i -e 's/zh_TW\.Big5/zh_TW/' configure.in
 %{__libtoolize}
 %{__intltoolize}
 %{__gnome_doc_common}
+%{__gtkdocize}
 %{__aclocal}
 %{__autoheader}
 %{__automake}
 %{__autoconf}
 %configure \
+	--enable-gtk-doc \
+	--with-html-dir=%{_gtkdocdir} \
 	--disable-update-desktopdb \
 	--disable-update-mimedb
-
+	
 %{__make}
 
 %install
@@ -137,8 +141,10 @@ rm -rf $RPM_BUILD_ROOT
 %files devel
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/lib*.so
+%{_gtkdocdir}/libglabels
 %{_libdir}/lib*.la
 %{_includedir}/libglabels
+%{_pkgconfigdir}/*.pc
 
 %files static
 %defattr(644,root,root,755)
