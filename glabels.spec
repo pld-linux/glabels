@@ -1,5 +1,5 @@
 Summary:	gLabels - a GNOME2 program to create labels and business cards
-Summary(pl):	gLabels - program dla GNOME2 do tworzenia etykiet i wizyt體ek
+Summary(pl.UTF-8):   gLabels - program dla GNOME2 do tworzenia etykiet i wizyt贸wek
 Name:		glabels
 Version:	2.1.3
 Release:	1
@@ -34,43 +34,43 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 gLabels is a small stand-alone program for creating labels and
 business cards.
 
-%description -l pl
-gLabels jest ma硑m, samodzielnym programem do tworzenia etykiet i
-wizyt體ek.
+%description -l pl.UTF-8
+gLabels jest ma艂ym, samodzielnym programem do tworzenia etykiet i
+wizyt贸wek.
 
 %package libs
 Summary:	glabels shared libraries
-Summary(pl):	Biblioteki wsp蟪dzielone glabels
+Summary(pl.UTF-8):   Biblioteki wsp贸艂dzielone glabels
 Group:		Libraries
 
 %description libs
 glabels shared libraries.
 
-%description libs -l pl
-Biblioteki wsp蟪dzielone glabels.
+%description libs -l pl.UTF-8
+Biblioteki wsp贸艂dzielone glabels.
 
 %package devel
 Summary:	Header files for glabels
-Summary(pl):	Pliki nag丑wkowe glabels
+Summary(pl.UTF-8):   Pliki nag艂贸wkowe glabels
 Group:		Development/Libraries
 Requires:	%{name}-libs = %{version}-%{release}
 
 %description devel
 Header files for glabels.
 
-%description devel -l pl
-Pliki nag丑wkowe glabels.
+%description devel -l pl.UTF-8
+Pliki nag艂贸wkowe glabels.
 
 %package static
 Summary:	glabels static library
-Summary(pl):	Statyczna biblioteka glabels
+Summary(pl.UTF-8):   Statyczna biblioteka glabels
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
 %description static
 glabels staic library.
 
-%description static -l pl
+%description static -l pl.UTF-8
 Statyczna biblioteka glabels.
 
 %prep
