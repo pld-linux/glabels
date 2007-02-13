@@ -1,5 +1,5 @@
 Summary:	gLabels - a GNOME2 program to create labels and business cards
-Summary(pl.UTF-8):   gLabels - program dla GNOME2 do tworzenia etykiet i wizytówek
+Summary(pl.UTF-8):	gLabels - program dla GNOME2 do tworzenia etykiet i wizytówek
 Name:		glabels
 Version:	2.1.3
 Release:	1
@@ -40,7 +40,7 @@ wizytówek.
 
 %package libs
 Summary:	glabels shared libraries
-Summary(pl.UTF-8):   Biblioteki współdzielone glabels
+Summary(pl.UTF-8):	Biblioteki współdzielone glabels
 Group:		Libraries
 
 %description libs
@@ -51,7 +51,7 @@ Biblioteki współdzielone glabels.
 
 %package devel
 Summary:	Header files for glabels
-Summary(pl.UTF-8):   Pliki nagłówkowe glabels
+Summary(pl.UTF-8):	Pliki nagłówkowe glabels
 Group:		Development/Libraries
 Requires:	%{name}-libs = %{version}-%{release}
 
@@ -63,7 +63,7 @@ Pliki nagłówkowe glabels.
 
 %package static
 Summary:	glabels static library
-Summary(pl.UTF-8):   Statyczna biblioteka glabels
+Summary(pl.UTF-8):	Statyczna biblioteka glabels
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
