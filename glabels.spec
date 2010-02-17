@@ -16,6 +16,7 @@ BuildRequires:	evolution-data-server-devel >= 1.2
 BuildRequires:	gettext-devel
 BuildRequires:	glib2-devel >= 1:2.12.0
 BuildRequires:	gnome-common >= 2.8.0
+BuildRequires:	gnome-doc-utils
 BuildRequires:	gtk+2-devel >= 2.10.0
 BuildRequires:	gtk-doc >= 1.0
 BuildRequires:	intltool >= 0.21
