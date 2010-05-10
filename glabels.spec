@@ -1,15 +1,15 @@
-Summary:	gLabels - a GNOME2 program to create labels and business cards
-Summary(pl.UTF-8):	gLabels - program dla GNOME2 do tworzenia etykiet i wizytówek
+Summary:	gLabels - a GNOME program to create labels and business cards
+Summary(pl.UTF-8):	gLabels - program dla GNOME do tworzenia etykiet i wizytówek
 Name:		glabels
-Version:	2.2.6
+Version:	2.2.8
 Release:	1
 License:	GPL
-Group:		Applications/Graphics
-Source0:	http://dl.sourceforge.net/glabels/%{name}-%{version}.tar.gz
-# Source0-md5:	594fffa4116a88772752c2582aa3605d
+Group:		X11/Applications/Graphics
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/glabels/2.2/%{name}-%{version}.tar.bz2
+# Source0-md5:	8e0ac4b19de68d55e33aef6a5544f0e5
 Patch0:		%{name}-desktop.patch
 URL:		http://glabels.sourceforge.net/
-BuildRequires:	autoconf
+BuildRequires:	autoconf >= 2.52
 BuildRequires:	automake
 BuildRequires:	docbook-dtd412-xml
 BuildRequires:	evolution-data-server-devel >= 1.2
@@ -24,13 +24,15 @@ BuildRequires:	libbonobo-devel >= 2.8.1
 BuildRequires:	libglade2-devel >= 1:2.6.0
 BuildRequires:	libgnomeui-devel >= 2.16.0
 BuildRequires:	libtool
-BuildRequires:	libxml2-devel >= 1:2.6.19
+BuildRequires:	libxml2-devel >= 1:2.7.0
 BuildRequires:	pkgconfig
+BuildRequires:	rpmbuild(find_lang) >= 1.23
 BuildRequires:	rpmbuild(macros) >= 1.197
 BuildRequires:	scrollkeeper
 BuildRequires:	sed >= 4.0
 Requires(post,postun):	desktop-file-utils
 Requires(post,postun):	scrollkeeper
+Requires(post,postun):	shared-mime-info
 Requires:	%{name}-libs = %{version}-%{release}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -58,6 +60,8 @@ Summary:	Header files for glabels
 Summary(pl.UTF-8):	Pliki nagłówkowe glabels
 Group:		Development/Libraries
 Requires:	%{name}-libs = %{version}-%{release}
+Requires:	glib2-devel >= 1:2.12.0
+Requires:	libxml2-devel >= 1:2.7.0
 
 %description devel
 Header files for glabels.
@@ -76,6 +80,18 @@ glabels staic library.
 
 %description static -l pl.UTF-8
 Statyczna biblioteka glabels.
+
+%package apidocs
+Summary:	glabels library API documentation
+Summary(pl.UTF-8):	Dokumentacja API biblioteki glabels
+Group:		Documentation
+Requires:	gtk-doc-common
+
+%description apidocs
+glabels library API documentation.
+
+%description apidocs -l pl.UTF-8
+Dokumentacja API biblioteki glabels.
 
 %prep
 %setup -q
@@ -107,7 +123,7 @@ rm -rf $RPM_BUILD_ROOT
 
 rm -rf $RPM_BUILD_ROOT%{_datadir}/{mime-info,application-registry}
 
-%find_lang %{name} --with-gnome --all-name
+%find_lang %{name} --with-gnome --with-omf
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -115,10 +131,12 @@ rm -rf $RPM_BUILD_ROOT
 %post
 %scrollkeeper_update_post
 %update_desktop_database_post
+%update_mime_database
 
 %postun
 %scrollkeeper_update_postun
 %update_desktop_database_postun
+%update_mime_database
 
 %post	libs -p /sbin/ldconfig
 %postun libs -p /sbin/ldconfig
@@ -126,28 +144,31 @@ rm -rf $RPM_BUILD_ROOT
 %files -f %{name}.lang
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog README TODO
-%attr(755,root,root) %{_bindir}/*
+%attr(755,root,root) %{_bindir}/glabels
+%attr(755,root,root) %{_bindir}/glabels-batch
 %{_datadir}/%{name}
-%{_datadir}/mime/packages/*
+%{_datadir}/mime/packages/glabels.xml
 %{_mandir}/man1/*.1*
 %{_pixmapsdir}/%{name}
 %{_pixmapsdir}/*.png
 %{_desktopdir}/*.desktop
-%{_omf_dest_dir}/%{name}
 
 %files libs
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/lib*.so.*.*
-%attr(755,root,root) %ghost %{_libdir}/lib*.so.5
+%attr(755,root,root) %{_libdir}/libglabels.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libglabels.so.5
 
 %files devel
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/lib*.so
-%{_gtkdocdir}/libglabels
-%{_libdir}/lib*.la
+%attr(755,root,root) %{_libdir}/libglabels.so
+%{_libdir}/libglabels.la
 %{_includedir}/libglabels
-%{_pkgconfigdir}/*.pc
+%{_pkgconfigdir}/libglabels.pc
 
 %files static
 %defattr(644,root,root,755)
-%{_libdir}/lib*.a
+%{_libdir}/libglabels.a
+
+%files apidocs
+%defattr(644,root,root,755)
+%{_gtkdocdir}/libglabels
