@@ -1,0 +1,48 @@
+--- glabels-3.0.0/libglbarcode/Makefile.am.link	2011-07-24 11:25:35.682237702 +0200
++++ glabels-3.0.0/libglbarcode/Makefile.am	2011-07-24 11:26:14.575360335 +0200
+@@ -7,9 +7,11 @@ INCLUDES = \
+ 
+ libglbarcode_3_0_la_LDFLAGS=\
+         -version-info $(LIBGLBARCODE_API_VERSION) \
+-        $(LIBGLBARCODE_LIBS) \
+         -no-undefined 
+ 
++libglbarcode_3_0_la_LIBADD =		\
++	$(LIBGLBARCODE_LIBS)
++
+ lib_LTLIBRARIES = libglbarcode-3.0.la
+ 
+ libglbarcode_3_0_la_SOURCES =		\
+--- glabels-3.0.0/configure.ac.link	2011-07-24 11:28:06.618086679 +0200
++++ glabels-3.0.0/configure.ac	2011-07-24 11:28:41.941228651 +0200
+@@ -163,6 +163,7 @@ dnl - LIBGLABELS more modest prerequisit
+ dnl ---------------------------------------------------------------------------
+ PKG_CHECK_MODULES(LIBGLABELS, [\
+ 	glib-2.0 >= $GLIB_REQUIRED \
++	gobject-2.0 \
+ 	libxml-2.0 >= $LIBXML_REQUIRED \
+ ])
+ 
+@@ -177,6 +178,7 @@ PKG_CHECK_MODULES(LIBGLBARCODE, [\
+ 	glib-2.0 >= $GLIB_REQUIRED \
+ 	cairo >= $CAIRO_REQUIRED \
+ 	pango >= $PANGO_REQUIRED \
++	pangocairo \
+ ])
+ 
+ AC_SUBST(LIBGLBARCODE_CFLAGS)
+--- glabels-3.0.0/libglabels/Makefile.am.link	2011-07-24 11:25:30.895596968 +0200
++++ glabels-3.0.0/libglabels/Makefile.am	2011-07-24 11:26:55.538471750 +0200
+@@ -7,9 +7,11 @@ INCLUDES = \
+ 
+ libglabels_3_0_la_LDFLAGS=\
+         -version-info $(LIBGLABELS_API_VERSION) \
+-        $(LIBGLABELS_LIBS) \
+         -no-undefined 
+ 
++libglabels_3_0_la_LIBADD =	\
++	$(LIBGLABELS_LIBS)
++
+ lib_LTLIBRARIES = libglabels-3.0.la
+ 
+ libglabels_3_0_la_SOURCES =	\
