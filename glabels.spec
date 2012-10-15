@@ -1,19 +1,20 @@
 Summary:	gLabels - a GNOME program to create labels and business cards
 Summary(pl.UTF-8):	gLabels - program dla GNOME do tworzenia etykiet i wizytówek
 Name:		glabels
-Version:	3.0.0
-Release:	3
+Version:	3.0.1
+Release:	1
 License:	GPL v3
 Group:		X11/Applications/Graphics
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/glabels/3.0/%{name}-%{version}.tar.bz2
-# Source0-md5:	823531d597a5483c30486f1b22ee07bf
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/glabels/3.0/%{name}-%{version}.tar.xz
+# Source0-md5:	21abcdb6f812f03c628fdc77adfc0573
 Patch0:		%{name}-link.patch
+Patch1:		eds-3.6.patch
 URL:		http://www.glabels.org/
 BuildRequires:	autoconf >= 2.64
 BuildRequires:	automake
 BuildRequires:	barcode-devel >= 0.98
 BuildRequires:	docbook-dtd412-xml
-BuildRequires:	evolution-data-server-devel >= 3.0.0
+BuildRequires:	evolution-data-server-devel >= 3.6.0
 BuildRequires:	gettext-devel
 BuildRequires:	glib2-devel >= 1:2.28.2
 BuildRequires:	gnome-common >= 2.8.0
@@ -28,6 +29,8 @@ BuildRequires:	libxml2-devel >= 1:2.7.8
 BuildRequires:	pkgconfig
 BuildRequires:	qrencode-devel >= 3.1.0
 BuildRequires:	rpmbuild(macros) >= 1.592
+BuildRequires:	tar >= 1:1.22
+BuildRequires:	xz
 BuildRequires:	zint-devel >= 2.4.0
 Requires(post,postun):	glib2 >= 1:2.26.0
 Requires(post,postun):	desktop-file-utils
@@ -101,6 +104,7 @@ Dokumentacja API biblioteki glabels.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
 %build
 %{__glib_gettextize}
