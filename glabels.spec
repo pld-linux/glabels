@@ -15,7 +15,7 @@ BuildRequires:	automake
 BuildRequires:	barcode-devel >= 0.98
 BuildRequires:	docbook-dtd412-xml
 BuildRequires:	evolution-data-server-devel >= 3.6.0
-BuildRequires:	gettext-devel
+BuildRequires:	gettext-tools
 BuildRequires:	glib2-devel >= 1:2.28.2
 BuildRequires:	gnome-common >= 2.8.0
 BuildRequires:	gnome-doc-utils
