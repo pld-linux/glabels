@@ -2,7 +2,7 @@ Summary:	gLabels - a GNOME program to create labels and business cards
 Summary(pl.UTF-8):	gLabels - program dla GNOME do tworzenia etykiet i wizytówek
 Name:		glabels
 Version:	3.2.1
-Release:	1
+Release:	2
 License:	GPL v3
 Group:		X11/Applications/Graphics
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/glabels/3.2/%{name}-%{version}.tar.xz
@@ -19,7 +19,6 @@ BuildRequires:	glib2-devel >= 1:2.28.2
 BuildRequires:	gnome-common >= 2.8.0
 BuildRequires:	gnome-doc-utils
 BuildRequires:	gtk+3-devel >= 3.0.9
-BuildRequires:	gtk-doc >= 1.0
 BuildRequires:	iec16022-devel >= 0.2.4
 BuildRequires:	intltool >= 0.40.0
 BuildRequires:	librsvg-devel >= 2.32.0
@@ -30,6 +29,7 @@ BuildRequires:	qrencode-devel >= 3.1.0
 BuildRequires:	rpmbuild(macros) >= 1.592
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
+BuildRequires:	yelp-tools
 BuildRequires:	zint-devel >= 2.4.0
 Requires(post,postun):	glib2 >= 1:2.26.0
 Requires(post,postun):	desktop-file-utils
@@ -158,12 +158,14 @@ rm -rf $RPM_BUILD_ROOT
 %doc AUTHORS ChangeLog README TODO
 %attr(755,root,root) %{_bindir}/glabels-3
 %attr(755,root,root) %{_bindir}/glabels-3-batch
+%{_datadir}/appdata/glabels-3.appdata.xml
 %{_datadir}/glabels-3.0
 %{_datadir}/glib-2.0/schemas/org.gnome.glabels-3.gschema.xml
 %{_datadir}/mime/packages/glabels-3.0.xml
 %{_mandir}/man1/*.1*
 %{_desktopdir}/glabels-3.0.desktop
 %{_iconsdir}/hicolor/*/*/*.png
+%{_iconsdir}/hicolor/*/*/*.svg
 
 %files libs
 %defattr(644,root,root,755)
