@@ -109,7 +109,6 @@ Dokumentacja API biblioteki glabels.
 
 %build
 %{__glib_gettextize}
-%{__gnome_doc_common}
 %{__gtkdocize}
 %{__intltoolize}
 %{__libtoolize}
