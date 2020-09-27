@@ -2,12 +2,13 @@ Summary:	gLabels - a GNOME program to create labels and business cards
 Summary(pl.UTF-8):	gLabels - program dla GNOME do tworzenia etykiet i wizytówek
 Name:		glabels
 Version:	3.4.1
-Release:	1
+Release:	2
 License:	GPL v3+ (libraries: LGPL v3+)
 Group:		X11/Applications/Graphics
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/glabels/3.4/%{name}-%{version}.tar.xz
 # Source0-md5:	095105ac95872bd9a767764fa60d5152
 Patch0:		%{name}-link.patch
+Patch1:		%{name}-no-common.patch
 URL:		http://www.glabels.org/
 BuildRequires:	autoconf >= 2.64
 BuildRequires:	automake
@@ -28,7 +29,7 @@ BuildRequires:	libxml2-devel >= 1:2.9.0
 BuildRequires:	pango-devel >= 1:1.36.0
 BuildRequires:	pkgconfig
 BuildRequires:	qrencode-devel >= 3.1.0
-BuildRequires:	rpmbuild(macros) >= 1.592
+BuildRequires:	rpmbuild(macros) >= 1.748
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
 BuildRequires:	yelp-tools
@@ -108,7 +109,7 @@ Summary(pl.UTF-8):	Dokumentacja API biblioteki glabels
 License:	CC-BY-SA v3.0
 Group:		Documentation
 Requires:	gtk-doc-common
-%if "%{_rpmversion}" >= "5"
+%if 0%{?_ver_ge "%{_rpmversion}" "4.6"}
 BuildArch:	noarch
 %endif
 
@@ -121,6 +122,7 @@ Dokumentacja API biblioteki glabels.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
 %build
 %{__glib_gettextize}
