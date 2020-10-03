@@ -29,7 +29,7 @@ BuildRequires:	libxml2-devel >= 1:2.9.0
 BuildRequires:	pango-devel >= 1:1.36.0
 BuildRequires:	pkgconfig
 BuildRequires:	qrencode-devel >= 3.1.0
-BuildRequires:	rpmbuild(macros) >= 1.749
+BuildRequires:	rpmbuild(macros) >= 1.752
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
 BuildRequires:	yelp-tools
@@ -109,9 +109,7 @@ Summary(pl.UTF-8):	Dokumentacja API biblioteki glabels
 License:	CC-BY-SA v3.0
 Group:		Documentation
 Requires:	gtk-doc-common
-%if 0%{?_ver_ge "%{_rpmversion}" "4.6"}
-BuildArch:	noarch
-%endif
+%{?noarchpackage}
 
 %description apidocs
 glabels library API documentation.
