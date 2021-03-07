@@ -109,7 +109,7 @@ Summary(pl.UTF-8):	Dokumentacja API biblioteki glabels
 License:	CC-BY-SA v3.0
 Group:		Documentation
 Requires:	gtk-doc-common
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description apidocs
 glabels library API documentation.
